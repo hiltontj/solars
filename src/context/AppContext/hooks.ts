@@ -32,6 +32,9 @@ export const useUpdateMonth = (): (month: number) => void => {
   const state = useAppState();
   const dispatch = useAppDispatcher();
   return React.useCallback((month: number) => {
+    if (isNaN(month)) {
+      return;
+    }
     const { date: current } = state;
     (async () => {
       let date = await updateMonth(current, month)
@@ -44,6 +47,9 @@ export const useUpdateDay = (): (day: number) => void => {
   const state = useAppState();
   const dispatch = useAppDispatcher();
   return React.useCallback((day: number) => {
+    if (isNaN(day)) {
+      return;
+    }
     const { date: current } = state;
     (async () => {
       let date = await updateDay(current, day)

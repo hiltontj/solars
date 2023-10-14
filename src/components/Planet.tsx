@@ -35,7 +35,7 @@ const Planet = ({
 
   return (
     <g transform={`rotate(${degrees}, ${centerX}, ${centerY})`}>
-      <circle cx={centerX} cy={centerY} r={planetRadius} fill="transparent" stroke="white" strokeWidth="1px" />
+      <circle cx={centerX} cy={centerY} r={planetRadius} fill="transparent" stroke="#969696" strokeWidth="1px" />
       <circle cx={centerX} cy={planetY} r="8" fill="white" />
     </g>
   )

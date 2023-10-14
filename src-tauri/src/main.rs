@@ -23,6 +23,16 @@ impl From<AppDate> for Date {
     }
 }
 
+impl From<NaiveDate> for AppDate {
+    fn from(nd: NaiveDate) -> Self {
+        Self {
+            year: nd.year(),
+            month: nd.month0() + 1,
+            day: (nd.day0() + 1) as f64,
+        }
+    }
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 enum PlanetName {
     Mercury,
@@ -84,16 +94,6 @@ fn update_month(current: AppDate, month: i32) -> Result<AppDate, String> {
         Ok(c_date.checked_sub_months(Months::new(delta.abs() as u32)).ok_or_else(|| "could not subtract months")?.into())
     } else {
         Ok(c_date.checked_add_months(Months::new(delta as u32)).ok_or_else(|| "could not add months")?.into())
-    }
-}
-
-impl From<NaiveDate> for AppDate {
-    fn from(nd: NaiveDate) -> Self {
-        Self {
-            year: nd.year(),
-            month: nd.month0() + 1,
-            day: (nd.day0() + 1) as f64,
-        }
     }
 }
 

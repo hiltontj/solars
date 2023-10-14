@@ -14,13 +14,61 @@
   -webkit-text-size-adjust: 100%;
 }
 
-.container {
-  margin: 0;
-  padding-top: 1vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
+.app-container {
+  height: calc(100vh - 16px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "side main main";
+  column-gap: 1rem;
+}
+
+.item-side {
+  grid-area: side;
+  place-self: center;
+}
+
+.item-main {
+  grid-area: main;
+  place-self: stretch;
+}
+
+.date-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "y-label m-label d-label"
+    "y-input m-input d-input"
+    "y-input m-input d-input";
+  column-gap: 5px;
+}
+
+.item-y-label {
+  grid-area: y-label;
+}
+
+.item-m-label {
+  grid-area: m-label;
+}
+
+.item-d-label {
+  grid-area: d-label;
+}
+
+.item-y-input {
+  grid-area: y-input;
+}
+
+.item-m-input {
+  grid-area: m-input;
+}
+
+.item-d-input {
+  grid-area: d-input;
+}
+
+.d-sel-input {
+  width: 8ch;
 }
 
 .logo {
@@ -28,15 +76,6 @@
   padding: 1.5em;
   will-change: filter;
   transition: 0.75s;
-}
-
-.logo.tauri:hover {
-  filter: drop-shadow(0 0 2em #24c8db);
-}
-
-.row {
-  display: flex;
-  justify-content: center;
 }
 
 a {
@@ -84,14 +123,10 @@ button {
   outline: none;
 }
 
-#greet-input {
-  margin-right: 5px;
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     color: #f6f6f6;
-    background-color: #2f2f2f;
+    background-color: #413c37;
   }
 
   a:hover {
@@ -100,8 +135,8 @@ button {
 
   input,
   button {
-    color: #ffffff;
-    background-color: #0f0f0f98;
+    color: #fff8d6;
+    background-color: #37322e98;
   }
   button:active {
     background-color: #0f0f0f69;

@@ -15,7 +15,13 @@ const SolarSystem = ({
   const centerY = React.useMemo(() => height / 2, [height])
 
   return (
-    <svg viewBox={`0 0 ${width} ${height}`} xmlns="http://www.w3.org/2000/svg">
+    <svg
+      preserveAspectRatio="xMidYMid meet"
+      viewBox={`0 0 ${width} ${height}`}
+      height="100%"
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       {PLANET_NAMES.map((pn, i) => (
         <Planet key={pn} name={pn} width={width} height={height} position={i + 1} />
       ))}
