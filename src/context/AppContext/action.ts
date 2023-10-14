@@ -1,5 +1,5 @@
-import { AppDate } from "../../util/dates";
-import { Tagged } from "../../util/types"
+import { AppDate } from "../../domain/dates";
+import { Tagged } from "../../domain/types"
 
 export type Action =
   | UpdateYear

@@ -1,6 +1,6 @@
 import React from "react";
 import { AppDispatchContext, AppDispatcher, AppStateContext, State } from ".";
-import { AppDate, updateDay, updateMonth } from "../../util/dates";
+import { AppDate, updateDay, updateMonth } from "../../domain/dates";
 
 const useAppState = (): State => {
   const state = React.useContext(AppStateContext);

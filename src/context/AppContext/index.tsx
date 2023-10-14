@@ -1,6 +1,6 @@
 import React from "react";
 import * as Actions from './action';
-import { AppDate } from "../../util/dates";
+import { AppDate } from "../../domain/dates";
 
 export type State = {
   date: AppDate;

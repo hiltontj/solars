@@ -24,14 +24,41 @@ impl From<AppDate> for Date {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+enum PlanetName {
+    Mercury,
+    Venus,
+    Earth,
+    Mars,
+    Jupiter,
+    Saturn,
+    Uranus,
+    Neptune,
+}
+
+impl From<PlanetName> for Planet {
+    fn from(p: PlanetName) -> Self {
+        match p {
+            PlanetName::Mercury => Planet::Mercury,
+            PlanetName::Venus => Planet::Venus,
+            PlanetName::Earth => Planet::Earth,
+            PlanetName::Mars => Planet::Mars,
+            PlanetName::Jupiter => Planet::Jupiter,
+            PlanetName::Saturn => Planet::Saturn,
+            PlanetName::Uranus => Planet::Uranus,
+            PlanetName::Neptune => Planet::Neptune,
+        }
+    }
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 struct Coordinates {
     rotation: f64,
 }
 
 #[tauri::command]
-fn rotation(date: AppDate) -> Coordinates {
+fn rotation(date: AppDate, planet: PlanetName) -> Coordinates {
     let julian_day = astro::time::julian_day(&date.into());
-    let (long_rads, _, _) = planet::heliocent_coords(&Planet::Earth, julian_day);
+    let (long_rads, _, _) = planet::heliocent_coords(&planet.into(), julian_day);
     let rotation = long_rads * 180.0 / std::f64::consts::PI;
     Coordinates { rotation }
 }
