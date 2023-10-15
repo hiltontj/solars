@@ -1,1 +1,1 @@
-export type Tagged<T extends string> = { tag: T }
+export type Tagged<T extends string> = { tag: T };

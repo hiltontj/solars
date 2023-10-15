@@ -1,10 +1,10 @@
 import React from "react";
-import * as Actions from './action';
+import * as Actions from "./action";
 import { AppDate } from "../../domain/dates";
 
 export type State = {
   date: AppDate;
-}
+};
 
 const initialize = (): State => ({
   date: {
@@ -12,27 +12,29 @@ const initialize = (): State => ({
     month: 3,
     day: 20,
   },
-})
+});
 
 const reducer = (state: State, action: Actions.Action): State => {
-  switch(action.tag) {
-    case 'UpdateDate': {
+  switch (action.tag) {
+    case "UpdateDate": {
       return { ...state, date: action.date };
     }
-    case 'UpdateYear': {
+    case "UpdateYear": {
       return { ...state, date: { ...state.date, year: action.year } };
     }
   }
-}
+};
 
-export const AppStateContext = React.createContext<State | null>(null)
+export const AppStateContext = React.createContext<State | null>(null);
 
-export type AppDispatcher = React.Dispatch<Actions.Action>
-export const AppDispatchContext = React.createContext<AppDispatcher | null>(null)
+export type AppDispatcher = React.Dispatch<Actions.Action>;
+export const AppDispatchContext = React.createContext<AppDispatcher | null>(
+  null,
+);
 
 type AppProviderProps = {
   children: React.ReactNode;
-}
+};
 
 export const AppProvider = ({ children }: AppProviderProps) => {
   const [state, dispatch] = React.useReducer(reducer, initialize());
@@ -43,5 +45,5 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         {children}
       </AppDispatchContext.Provider>
     </AppStateContext.Provider>
-  )
-}
+  );
+};
