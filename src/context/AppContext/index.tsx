@@ -7,6 +7,7 @@ import { AppOptions } from "../../domain/options";
 export type State = {
   date: AppDate;
   planets: AppPlanet[];
+  displayOptions: boolean;
   options: AppOptions;
 };
 
@@ -16,6 +17,7 @@ const initialize = (): State => ({
     name,
     show: true,
   })),
+  displayOptions: false,
   options: {
     planetNames: false,
   },
@@ -56,6 +58,9 @@ const reducer = (state: State, action: Actions.Action): State => {
         ...state,
         options: { ...state.options, planetNames: !state.options.planetNames },
       };
+    }
+    case "ToggleDisplayOptions": {
+      return { ...state, displayOptions: !state.displayOptions };
     }
   }
 };

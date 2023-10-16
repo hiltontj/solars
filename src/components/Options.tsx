@@ -7,6 +7,7 @@ const Options = () => {
 
   return (
     <div className="options-container">
+      <h3 className="options-title">Settings</h3>
       <Toggle
         id="toggle-planet-names"
         className="options-toggle"

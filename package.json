@@ -8,12 +8,13 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "tauri": "tauri",
-    "fmt": "npx prettier . --write --ignore-path .gitignore"
+    "fmt": "npx prettier . --write"
   },
   "dependencies": {
     "@tauri-apps/api": "^1.5.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.11.0"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.5.0",

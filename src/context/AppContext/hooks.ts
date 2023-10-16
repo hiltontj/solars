@@ -90,6 +90,16 @@ export const useOptions = (): AppOptions => {
   return state.options;
 };
 
+export const useDisplayOptions = (): boolean => {
+  const state = useAppState();
+  return state.displayOptions;
+};
+
+export const useToggleDisplayOptions = (): (() => void) => {
+  const dispatch = useAppDispatcher();
+  return React.useCallback(() => dispatch({ tag: "ToggleDisplayOptions" }), []);
+};
+
 export const useTogglePlanetNames = (): (() => void) => {
   const dispatch = useAppDispatcher();
   return React.useCallback(() => dispatch({ tag: "TogglePlanetNames" }), []);
