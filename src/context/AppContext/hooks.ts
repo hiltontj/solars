@@ -1,6 +1,7 @@
 import React from "react";
 import { AppDispatchContext, AppDispatcher, AppStateContext, State } from ".";
 import { AppDate, updateDay, updateMonth } from "../../domain/dates";
+import { AppPlanet, PlanetName } from "../../domain/planets";
 
 const useAppState = (): State => {
   const state = React.useContext(AppStateContext);
@@ -40,12 +41,9 @@ export const useUpdateMonth = (): ((month: number) => void) => {
   const dispatch = useAppDispatcher();
   return React.useCallback(
     (month: number) => {
-      if (isNaN(month)) {
-        return;
-      }
       const { date: current } = state;
       (async () => {
-        let date = await updateMonth(current, month);
+        const date = await updateMonth(current, month);
         dispatch({ tag: "UpdateDate", date });
       })();
     },
@@ -58,15 +56,25 @@ export const useUpdateDay = (): ((day: number) => void) => {
   const dispatch = useAppDispatcher();
   return React.useCallback(
     (day: number) => {
-      if (isNaN(day)) {
-        return;
-      }
       const { date: current } = state;
       (async () => {
-        let date = await updateDay(current, day);
+        const date = await updateDay(current, day);
         dispatch({ tag: "UpdateDate", date });
       })();
     },
     [state.date],
+  );
+};
+
+export const usePlanets = (): AppPlanet[] => {
+  const state = useAppState();
+  return state.planets;
+};
+
+export const useShowPlanet = (name: PlanetName): ((show: boolean) => void) => {
+  const dispatch = useAppDispatcher();
+  return React.useCallback(
+    (show: boolean) => dispatch({ tag: "SetPlanetShow", name, show }),
+    [],
   );
 };

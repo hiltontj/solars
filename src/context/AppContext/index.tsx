@@ -1,9 +1,11 @@
 import React from "react";
 import * as Actions from "./action";
 import { AppDate } from "../../domain/dates";
+import { AppPlanet, PLANET_NAMES } from "../../domain/planets";
 
 export type State = {
   date: AppDate;
+  planets: AppPlanet[];
 };
 
 const initialize = (): State => ({
@@ -12,6 +14,10 @@ const initialize = (): State => ({
     month: 3,
     day: 20,
   },
+  planets: PLANET_NAMES.map((name) => ({
+    name,
+    show: true,
+  })),
 });
 
 const reducer = (state: State, action: Actions.Action): State => {
@@ -21,6 +27,22 @@ const reducer = (state: State, action: Actions.Action): State => {
     }
     case "UpdateYear": {
       return { ...state, date: { ...state.date, year: action.year } };
+    }
+    case "SetPlanetShow": {
+      const { name, show } = action;
+      return {
+        ...state,
+        planets: state.planets.map((p) =>
+          p.name === name
+            ? {
+                ...p,
+                show,
+              }
+            : {
+                ...p,
+              },
+        ),
+      };
     }
   }
 };

@@ -12,6 +12,11 @@ export type PlanetName = (typeof PLANET_NAMES)[number];
 
 export const N_PLANETS = PLANET_NAMES.length;
 
+export type AppPlanet = {
+  name: PlanetName;
+  show: boolean;
+};
+
 export const getPlanetColor = (planet: PlanetName): string => {
   switch (planet) {
     case "Earth":
