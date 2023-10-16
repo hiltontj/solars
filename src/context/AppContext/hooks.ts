@@ -2,6 +2,7 @@ import React from "react";
 import { AppDispatchContext, AppDispatcher, AppStateContext, State } from ".";
 import { AppDate, updateDay, updateMonth } from "../../domain/dates";
 import { AppPlanet, PlanetName } from "../../domain/planets";
+import { AppOptions } from "../../domain/options";
 
 const useAppState = (): State => {
   const state = React.useContext(AppStateContext);
@@ -77,4 +78,19 @@ export const useShowPlanet = (name: PlanetName): ((show: boolean) => void) => {
     (show: boolean) => dispatch({ tag: "SetPlanetShow", name, show }),
     [],
   );
+};
+
+export const useGoToToday = (): (() => void) => {
+  const dispatch = useAppDispatcher();
+  return React.useCallback(() => dispatch({ tag: "GoToToday" }), []);
+};
+
+export const useOptions = (): AppOptions => {
+  const state = useAppState();
+  return state.options;
+};
+
+export const useTogglePlanetNames = (): (() => void) => {
+  const dispatch = useAppDispatcher();
+  return React.useCallback(() => dispatch({ tag: "TogglePlanetNames" }), []);
 };

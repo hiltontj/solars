@@ -1,5 +1,6 @@
 import {
   useDate,
+  useGoToToday,
   useUpdateDay,
   useUpdateMonth,
   useUpdateYear,
@@ -10,6 +11,7 @@ const DateSelector = () => {
   const updateDay = useUpdateDay();
   const updateMonth = useUpdateMonth();
   const updateYear = useUpdateYear();
+  const goToToday = useGoToToday();
 
   return (
     <div className="date-container">
@@ -22,7 +24,6 @@ const DateSelector = () => {
         type="number"
         value={year}
         onChange={({ target: { value } }) => updateYear(parseInt(value))}
-        onScroll={(e) => console.debug(e)}
       />
       <label className="item-m-label" htmlFor="d-sel-month">
         Month
@@ -33,7 +34,6 @@ const DateSelector = () => {
         type="number"
         value={month}
         onChange={({ target: { value } }) => updateMonth(parseInt(value))}
-        onScroll={(e) => console.debug(e)}
       />
       <label className="item-d-label" htmlFor="d-sel-day">
         Day
@@ -44,8 +44,11 @@ const DateSelector = () => {
         type="number"
         value={day}
         onChange={({ target: { value } }) => updateDay(parseInt(value))}
-        onScroll={(e) => console.debug(e)}
+        onScroll={(e) => e.stopPropagation()}
       />
+      <button className="item-t-button" onClick={goToToday}>
+        Today
+      </button>
     </div>
   );
 };

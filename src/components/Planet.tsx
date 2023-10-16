@@ -1,6 +1,6 @@
 import React from "react";
 import { invoke } from "@tauri-apps/api/tauri";
-import { useDate } from "../context/AppContext/hooks";
+import { useDate, useOptions } from "../context/AppContext/hooks";
 import {
   N_PLANETS,
   PlanetName,
@@ -21,6 +21,7 @@ type PlanetProps = {
 
 const Planet = ({ name, width, height, position }: PlanetProps) => {
   const date = useDate();
+  const { planetNames } = useOptions();
   const [degrees, setDegrees] = React.useState(0);
   const centerX = React.useMemo(() => width / 2, [width]);
   const centerY = React.useMemo(() => height / 2, [height]);
@@ -50,19 +51,23 @@ const Planet = ({ name, width, height, position }: PlanetProps) => {
         stroke="#969696"
         strokeWidth="1px"
       />
-      <circle
-        id={orbitPathId}
-        cx={centerX}
-        cy={centerY}
-        r={planetRadius + 2}
-        fill="transparent"
-        stroke="transparent"
-      />
-      <text fill="#969696">
-        <textPath href={`#${orbitPathId}`} fontSize={12}>
-          {name}
-        </textPath>
-      </text>
+      {planetNames && (
+        <>
+          <circle
+            id={orbitPathId}
+            cx={centerX}
+            cy={centerY}
+            r={planetRadius + 2}
+            fill="transparent"
+            stroke="transparent"
+          />
+          <text fill="#969696">
+            <textPath href={`#${orbitPathId}`} fontSize={12}>
+              {name}
+            </textPath>
+          </text>
+        </>
+      )}
       <circle
         cx={centerX}
         cy={planetY}

@@ -1,23 +1,24 @@
 import React from "react";
 import * as Actions from "./action";
-import { AppDate } from "../../domain/dates";
+import { AppDate, today } from "../../domain/dates";
 import { AppPlanet, PLANET_NAMES } from "../../domain/planets";
+import { AppOptions } from "../../domain/options";
 
 export type State = {
   date: AppDate;
   planets: AppPlanet[];
+  options: AppOptions;
 };
 
 const initialize = (): State => ({
-  date: {
-    year: 2021,
-    month: 3,
-    day: 20,
-  },
+  date: today(),
   planets: PLANET_NAMES.map((name) => ({
     name,
     show: true,
   })),
+  options: {
+    planetNames: false,
+  },
 });
 
 const reducer = (state: State, action: Actions.Action): State => {
@@ -27,6 +28,12 @@ const reducer = (state: State, action: Actions.Action): State => {
     }
     case "UpdateYear": {
       return { ...state, date: { ...state.date, year: action.year } };
+    }
+    case "GoToToday": {
+      return {
+        ...state,
+        date: today(),
+      };
     }
     case "SetPlanetShow": {
       const { name, show } = action;
@@ -42,6 +49,12 @@ const reducer = (state: State, action: Actions.Action): State => {
                 ...p,
               },
         ),
+      };
+    }
+    case "TogglePlanetNames": {
+      return {
+        ...state,
+        options: { ...state.options, planetNames: !state.options.planetNames },
       };
     }
   }

@@ -6,6 +6,15 @@ export type AppDate = {
   day: number;
 };
 
+export const today = (): AppDate => {
+  const d = new Date();
+  return {
+    year: d.getFullYear(),
+    month: d.getMonth() + 1,
+    day: d.getDate(),
+  };
+};
+
 export const updateDay = async (
   current: AppDate,
   day: number,
