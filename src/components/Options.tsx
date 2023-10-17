@@ -1,9 +1,14 @@
-import { useOptions, useTogglePlanetNames } from "../context/AppContext/hooks";
+import {
+  useOptions,
+  useToggleOrbitalLines,
+  useTogglePlanetNames,
+} from "../context/AppContext/hooks";
 import Toggle from "./Toggle";
 
 const Options = () => {
-  const { planetNames } = useOptions();
+  const { planetNames, orbitalLines } = useOptions();
   const togglePlanetNames = useTogglePlanetNames();
+  const toggleOrbitalLines = useToggleOrbitalLines();
 
   return (
     <div className="options-container">
@@ -16,6 +21,15 @@ const Options = () => {
       />
       <label htmlFor="toggle-planet-names" className="options-label">
         Planet Names
+      </label>
+      <Toggle
+        id="toggle-orbital-lines"
+        className="options-toggle"
+        checked={orbitalLines}
+        onClick={toggleOrbitalLines}
+      />
+      <label htmlFor="toggle-orbital-lines" className="options-label">
+        Orbital Lines
       </label>
     </div>
   );

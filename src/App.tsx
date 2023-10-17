@@ -30,7 +30,8 @@ const SidePane = () => {
   return (
     <>
       <Title />
-      {displayOptions ? <Options /> : <DateSelector />}
+      <DateSelector />
+      {displayOptions && <Options />}
     </>
   );
 };

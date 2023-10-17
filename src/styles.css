@@ -11,6 +11,8 @@ body {
   color: #0f0f0f;
   background-color: #f6f6f6;
 
+  overflow: hidden;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -60,7 +62,6 @@ body {
     "y-input m-input d-input t-button"
     "y-input m-input d-input t-button";
   column-gap: 5px;
-  margin: auto;
 }
 
 .item-y-label {
@@ -189,7 +190,12 @@ button {
     background-color: #37322e98;
   }
 
+  button:hover {
+    border-color: #f29950;
+  }
+
   button:active {
+    border-color: #f29950;
     background-color: #0f0f0f69;
   }
 }
@@ -216,4 +222,49 @@ button {
 .settings-button:hover,
 .settings-button-close {
   background-color: #f299508f;
+}
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 4rem;
+  background-color: color(srgb 0.315 0.2695 0.2315);
+  color: #b5b5b5;
+  border-radius: 6px;
+  padding: 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 0.25rem;
+  left: 105%;
+}
+
+.tooltip-text svg {
+  margin-right: 0.25rem;
+}
+
+.tooltip:hover .tooltip-text {
+  animation: 1.5s ttFadeIn;
+  visibility: visible;
+}
+
+@keyframes ttFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

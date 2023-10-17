@@ -20,6 +20,7 @@ const initialize = (): State => ({
   displayOptions: false,
   options: {
     planetNames: false,
+    orbitalLines: true,
   },
 });
 
@@ -61,6 +62,15 @@ const reducer = (state: State, action: Actions.Action): State => {
     }
     case "ToggleDisplayOptions": {
       return { ...state, displayOptions: !state.displayOptions };
+    }
+    case "ToggleOrbitalLines": {
+      return {
+        ...state,
+        options: {
+          ...state.options,
+          orbitalLines: !state.options.orbitalLines,
+        },
+      };
     }
   }
 };

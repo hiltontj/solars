@@ -8,7 +8,8 @@ export type Action =
   | SetPlanetShow
   | GoToToday
   | ToggleDisplayOptions
-  | TogglePlanetNames;
+  | TogglePlanetNames
+  | ToggleOrbitalLines;
 
 export type UpdateYear = Tagged<"UpdateYear"> & {
   year: number;
@@ -24,7 +25,6 @@ export type SetPlanetShow = Tagged<"SetPlanetShow"> & {
 };
 
 export type GoToToday = Tagged<"GoToToday">;
-
 export type ToggleDisplayOptions = Tagged<"ToggleDisplayOptions">;
-
 export type TogglePlanetNames = Tagged<"TogglePlanetNames">;
+export type ToggleOrbitalLines = Tagged<"ToggleOrbitalLines">;

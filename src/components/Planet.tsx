@@ -21,7 +21,7 @@ type PlanetProps = {
 
 const Planet = ({ name, width, height, position }: PlanetProps) => {
   const date = useDate();
-  const { planetNames } = useOptions();
+  const { planetNames, orbitalLines } = useOptions();
   const [degrees, setDegrees] = React.useState(0);
   const centerX = React.useMemo(() => width / 2, [width]);
   const centerY = React.useMemo(() => height / 2, [height]);
@@ -43,14 +43,16 @@ const Planet = ({ name, width, height, position }: PlanetProps) => {
 
   return (
     <g transform={`rotate(${degrees}, ${centerX}, ${centerY})`}>
-      <circle
-        cx={centerX}
-        cy={centerY}
-        r={planetRadius}
-        fill="transparent"
-        stroke="#969696"
-        strokeWidth="1px"
-      />
+      {orbitalLines && (
+        <circle
+          cx={centerX}
+          cy={centerY}
+          r={planetRadius}
+          fill="transparent"
+          stroke="#969696"
+          strokeWidth="1px"
+        />
+      )}
       {planetNames && (
         <>
           <circle

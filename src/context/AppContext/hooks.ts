@@ -104,3 +104,8 @@ export const useTogglePlanetNames = (): (() => void) => {
   const dispatch = useAppDispatcher();
   return React.useCallback(() => dispatch({ tag: "TogglePlanetNames" }), []);
 };
+
+export const useToggleOrbitalLines = (): (() => void) => {
+  const dispatch = useAppDispatcher();
+  return React.useCallback(() => dispatch({ tag: "ToggleOrbitalLines" }), []);
+};
