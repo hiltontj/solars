@@ -1,9 +1,9 @@
 [package]
 name = "solars"
 version = "0.0.0"
-description = "A Tauri App"
-authors = ["you"]
-license = ""
+description = "Visualize the planets of our solar system."
+authors = ["Trevor Hilton"]
+license = "MIT"
 repository = ""
 edition = "2021"
 

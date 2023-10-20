@@ -31,7 +31,7 @@ const SolarSystem = ({ width, height }: SolarSystemProps) => {
             position={i + 1}
           />
         ))}
-      <circle cx={centerX} cy={centerY} r="12" fill="yellow" />
+      <circle cx={centerX} cy={centerY} r="12" fill="#F29950" />
     </svg>
   );
 };

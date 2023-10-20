@@ -9,7 +9,7 @@ const Toggle = (props: ToggleProps) => {
       <div className={props.className} onClick={props.onClick}>
         {props.checked ? <On /> : <Off />}
       </div>
-      <input type="checkbox" style={{ display: "none" }} {...props} readonly />
+      <input type="checkbox" style={{ display: "none" }} {...props} readOnly />
     </>
   );
 };
