@@ -1,4 +1,3 @@
-import { BiCommand } from "react-icons/bi";
 import {
   useDate,
   useGoToToday,

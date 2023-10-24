@@ -21,14 +21,19 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.tauri.dev",
+      "identifier": "com.tauri.dev.solars",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
         "icons/128x128@2x.png",
         "icons/icon.icns",
         "icons/icon.ico"
-      ]
+      ],
+      "category": "Education",
+      "macOS": {
+        "license": "LICENSE"
+      },
+      "shortDescription": "Visualize the planets of our solar system"
     },
     "security": {
       "csp": null
