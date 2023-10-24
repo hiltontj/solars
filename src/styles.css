@@ -21,7 +21,7 @@ body {
 }
 
 .app-container {
-  height: calc(100vh - 16px);
+  height: 100vh;
   display: grid;
   grid-template-columns: 3rem repeat(3, 1fr);
   grid-template-areas: "nav side main main";
@@ -35,7 +35,6 @@ body {
   height: 100%;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 1em;
   background-color: color(srgb 0.22 0.195 0.1771);
 }
 
@@ -222,6 +221,7 @@ button {
   width: 2rem;
   cursor: pointer;
   border-radius: 1rem;
+  margin-bottom: 0.5em;
 }
 
 .settings-button:hover,
