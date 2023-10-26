@@ -19,12 +19,31 @@ export const updateDay = async (
   current: AppDate,
   day: number,
 ): Promise<AppDate> => {
-  return await invoke("update_day", { current, day });
+  try {
+    return await invoke("update_day", { current, day });
+  } catch (err) {
+    return current;
+  }
 };
 
 export const updateMonth = async (
   current: AppDate,
   month: number,
 ): Promise<AppDate> => {
-  return await invoke("update_month", { current, month });
+  try {
+    return await invoke("update_month", { current, month });
+  } catch (err) {
+    return current;
+  }
+};
+
+export const updateYear = async (
+  current: AppDate,
+  year: number,
+): Promise<AppDate> => {
+  try {
+    return await invoke("update_year", { current, year });
+  } catch (err) {
+    return current;
+  }
 };

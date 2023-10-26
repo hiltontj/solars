@@ -1,6 +1,11 @@
 import React from "react";
 import { AppDispatchContext, AppDispatcher, AppStateContext, State } from ".";
-import { AppDate, updateDay, updateMonth } from "../../domain/dates";
+import {
+  AppDate,
+  updateDay,
+  updateMonth,
+  updateYear,
+} from "../../domain/dates";
 import { AppPlanet, PlanetName } from "../../domain/planets";
 import { AppOptions } from "../../domain/options";
 
@@ -30,10 +35,17 @@ export const useDate = (): AppDate => {
 };
 
 export const useUpdateYear = (): ((year: number) => void) => {
+  const state = useAppState();
   const dispatch = useAppDispatcher();
   return React.useCallback(
-    (year: number) => dispatch({ tag: "UpdateYear", year }),
-    [],
+    (year: number) => {
+      const { date: current } = state;
+      (async () => {
+        const date = await updateYear(current, year);
+        dispatch({ tag: "UpdateDate", date });
+      })();
+    },
+    [state.date],
   );
 };
 

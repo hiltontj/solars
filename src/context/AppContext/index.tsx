@@ -29,9 +29,6 @@ const reducer = (state: State, action: Actions.Action): State => {
     case "UpdateDate": {
       return { ...state, date: action.date };
     }
-    case "UpdateYear": {
-      return { ...state, date: { ...state.date, year: action.year } };
-    }
     case "GoToToday": {
       return {
         ...state,

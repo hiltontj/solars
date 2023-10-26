@@ -3,17 +3,12 @@ import { PlanetName } from "../../domain/planets";
 import { Tagged } from "../../domain/types";
 
 export type Action =
-  | UpdateYear
   | UpdateDate
   | SetPlanetShow
   | GoToToday
   | ToggleDisplayOptions
   | TogglePlanetNames
   | ToggleOrbitalLines;
-
-export type UpdateYear = Tagged<"UpdateYear"> & {
-  year: number;
-};
 
 export type UpdateDate = Tagged<"UpdateDate"> & {
   date: AppDate;

@@ -1,9 +1,12 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use astro::{planet::{Planet, self}, time::{Date, CalType}};
-use chrono::{NaiveDate, Datelike, Days, Months};
-use serde::{Serialize, Deserialize};
+use astro::{
+    planet::{self, Planet},
+    time::{CalType, Date},
+};
+use chrono::{Datelike, Days, Months, NaiveDate};
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
 struct AppDate {
@@ -76,25 +79,47 @@ fn rotation(date: AppDate, planet: PlanetName) -> Coordinates {
 #[tauri::command]
 fn update_day(current: AppDate, day: f64) -> Result<AppDate, String> {
     let date_days = current.day as u32;
-    let c_date = NaiveDate::from_ymd_opt(current.year, current.month, date_days).ok_or_else(|| "invalid date")?;
+    let c_date = NaiveDate::from_ymd_opt(current.year, current.month, date_days)
+        .ok_or_else(|| "invalid date")?;
     let delta = day - current.day;
     if delta.is_sign_negative() {
-        Ok(c_date.checked_sub_days(Days::new(delta.abs() as u64)).ok_or_else(|| "could not subtract days")?.into())
+        Ok(c_date
+            .checked_sub_days(Days::new(delta.abs() as u64))
+            .ok_or_else(|| "could not subtract days")?
+            .into())
     } else {
-        Ok(c_date.checked_add_days(Days::new(delta as u64)).ok_or_else(|| "could not add days")?.into())
+        Ok(c_date
+            .checked_add_days(Days::new(delta as u64))
+            .ok_or_else(|| "could not add days")?
+            .into())
     }
 }
 
 #[tauri::command]
 fn update_month(current: AppDate, month: i32) -> Result<AppDate, String> {
     let date_days = current.day as u32;
-    let c_date = NaiveDate::from_ymd_opt(current.year, current.month, date_days).ok_or_else(|| "invalid date")?;
+    let c_date = NaiveDate::from_ymd_opt(current.year, current.month, date_days)
+        .ok_or_else(|| "invalid date")?;
     let delta = month - (current.month as i32);
     if delta.is_negative() {
-        Ok(c_date.checked_sub_months(Months::new(delta.abs() as u32)).ok_or_else(|| "could not subtract months")?.into())
+        Ok(c_date
+            .checked_sub_months(Months::new(delta.abs() as u32))
+            .ok_or_else(|| "could not subtract months")?
+            .into())
     } else {
-        Ok(c_date.checked_add_months(Months::new(delta as u32)).ok_or_else(|| "could not add months")?.into())
+        Ok(c_date
+            .checked_add_months(Months::new(delta as u32))
+            .ok_or_else(|| "could not add months")?
+            .into())
     }
+}
+
+#[tauri::command]
+fn update_year(current: AppDate, year: i32) -> Result<AppDate, String> {
+    let date_days = current.day as u32;
+    Ok(NaiveDate::from_ymd_opt(year, current.month, date_days)
+        .ok_or_else(|| "invalid date")?
+        .into())
 }
 
 fn main() {
@@ -103,6 +128,7 @@ fn main() {
             rotation,
             update_day,
             update_month,
+            update_year
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
