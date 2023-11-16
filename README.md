@@ -19,7 +19,7 @@ Enter a year, month, and day to see the relative alignment of the planets, or se
 <img src="public/solars_main.gif" />
 </div>
 
-Some basic options allow you to customize the view.:
+Some basic options allow you to customize the view:
 
 <div>
 <img src="public/solars_options.gif" />
