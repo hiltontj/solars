@@ -11,6 +11,42 @@
 
 [tauri-app]: https://tauri.app/
 
+## Preview
+
+Enter a year, month, and day to see the relative alignment of the planets, or select one of the inputs and scroll up or down to fast-forward or rewind, respectively. Click **Today** to jump to today's date:
+
+<div>
+<img src="public/solars_main.gif" />
+</div>
+
+Some basic options allow you to customize the view.:
+
+<div>
+<img src="public/solars_options.gif" />
+</div>
+
+## Build
+
+Clone this repository to your local machine. Since `solars` is a Tauri app, in order to build it, please follow the steps to build `solars` on your platform [here][tauri-build]. You will need one of Tauri's CLI utilities installed, e.g., `tauri-cli`:
+
+```
+cargo install tauri-cli
+cargo tauri build
+```
+
+Currently, `solars` is not distributed on any app platforms.
+
+[tauri-build]: https://tauri.app/v1/guides/building/
+
+## Development
+
+Clone this repository to your local machine. Since `solars` is a Tauri app, you can use the `tauri-cli` to run the development environment:
+
+```
+cargo install tauri-cli
+cargo tauri dev
+```
+
 ## License
 
 This project is licensed under the MIT License.
