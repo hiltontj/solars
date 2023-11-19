@@ -25,27 +25,30 @@ Some basic options allow you to customize the view:
 <img src="public/solars_options.gif" />
 </div>
 
-## Build
+## Build & Development
 
-Clone this repository to your local machine. Since `solars` is a Tauri app, in order to build it, please follow the steps to build `solars` on your platform [here][tauri-build]. You will need one of Tauri's CLI utilities installed, e.g., `tauri-cli`:
+Clone this repository to your local machine. Since `solars` is a Tauri app, you may read the guides for [Developing Tauri apps][tauri-develop] and for [Building Tauri apps][tauri-build] on the official website.
+
+You will need one of Tauri's CLI utilities installed, e.g., `tauri-cli`:
 
 ```
 cargo install tauri-cli
+```
+
+You can then build the application bundle for your local operating system:
+
+```
 cargo tauri build
 ```
 
-Currently, `solars` is not distributed on any app platforms.
-
-[tauri-build]: https://tauri.app/v1/guides/building/
-
-## Development
-
-Clone this repository to your local machine. Since `solars` is a Tauri app, you can use the `tauri-cli` to run the development environment:
+Or, launch the development server:
 
 ```
-cargo install tauri-cli
 cargo tauri dev
 ```
+
+[tauri-build]: https://tauri.app/v1/guides/building/
+[tauri-develop]: https://tauri.app/v1/guides/development/development-cycle
 
 ## License
 
