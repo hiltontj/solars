@@ -3,7 +3,7 @@
 <h1>solars</h1>
 <p align="center"><i>Visualize the planets of our solar system</i></p>
 
-![GitHub all releases](https://img.shields.io/github/downloads/hiltontj/solars/total)
+[![GitHub release](https://img.shields.io/github/v/release/hiltontj/solars)](https://github.com/hiltontj/solars/releases)
 
 </div>
 
