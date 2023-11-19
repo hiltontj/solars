@@ -1,9 +1,11 @@
 <div align="center">
 <img src="public/solars.svg" width="128px"/>
 <h1>solars</h1>
-</div>
-
 <p align="center"><i>Visualize the planets of our solar system</i></p>
+
+![GitHub all releases](https://img.shields.io/github/downloads/hiltontj/solars/total)
+
+</div>
 
 ## Overview
 
