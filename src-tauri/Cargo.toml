@@ -1,10 +1,10 @@
 [package]
 name = "solars"
-version = "0.0.0"
+version = "0.1.0"
 description = "Visualize the planets of our solar system."
 authors = ["Trevor Hilton"]
 license = "MIT"
-repository = ""
+repository = "https://github.com/hiltontj/solars"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
